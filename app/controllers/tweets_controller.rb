@@ -3,7 +3,7 @@ class TweetsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
 
   def index
-    @tweets = Tweet.all.includes(:user)
+    @tweets = Tweet.all.includes(:user).order("created_at DESC").page(params[:page]).per(5)
   end
 
   def new
