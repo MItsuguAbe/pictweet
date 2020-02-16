@@ -28,6 +28,8 @@ class TweetsController < ApplicationController
   end
 
   def show
+    @comment = Comment.new                          #こっちはコメントを投稿するとき
+    @comments = @tweet.comments.includes(:user)     #こっちはコメントを表示するとき。あと、ここでN＋１解決する
   end
 
   private
