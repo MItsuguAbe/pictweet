@@ -43,4 +43,21 @@ describe 'ツイート機能', type: :system do
         end
     end
 
+    describe '新規作成機能' do
+        let(:login_user){user_a}
+
+        before do
+            visit new_tweet_path
+            fill_in 'text', with: tweet_text
+            click_button 'SEND'
+        end
+
+        context 'ユーザーAがログインしている時' do
+            let(:tweet_text){'新規作成のテストを書く'}
+
+            it '投稿成功' do
+                expect(page).to have_content '投稿が完了しました。'
+            end
+        end
+    end
 end
