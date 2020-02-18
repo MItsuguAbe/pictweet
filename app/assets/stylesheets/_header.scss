@@ -1,0 +1,16 @@
+#navbarSupportedContent{
+    background-color: black;
+}
+
+
+#navbarSupportedContent ul{
+    display: flex;
+    justify-content: center;
+}
+
+#navbarSupportedContent ul li{
+    margin-right: 100px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: large;
+}
