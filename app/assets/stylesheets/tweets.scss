@@ -4,16 +4,37 @@
 
 
 
-// .like-btn用
 .like-btn {
-    color: #8899a6;
-    
-  }
-  .like-btn-unlike {
-    color: #ff2581;
-  }
-  
-  .posts-show-item .fa {
-    font-size: 16px;
-    margin-right: 3px;
-  }
+  color: #8899a6;
+}
+
+
+.like-btn-unlike {
+  color: #ff2581;
+
+}
+
+.classname{
+  font-size: 30px !important;
+}
+
+.likecount{
+  font-size: 20px;
+  margin-left: 10px;
+}
+
+
+.posts-show-item .fa {
+  font-size: 16px;
+  margin-right: 3px;
+}
+
+
+.form-check{
+  float:left;
+  margin-right: 35px;
+}
+
+.badge-primary{
+  margin: 10px 0 10px 0;
+}

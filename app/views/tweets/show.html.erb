@@ -15,22 +15,29 @@
      <% end %>
     <%= simple_format(@tweet.text) %>
     <span class="name">
-      <a href="/users/<%= @tweet.user.id %>">
-        <span>投稿者</span><%= @tweet.user.nickname %>
-      </a>
-        
       <% if user_signed_in? && Like.find_by(user_id: current_user.id, tweet_id: @tweet.id) %>
         <%= link_to("/likes/#{@tweet.id}/destroy", {method: "post"}) do %>
-          <span class="fa fa-heart like-btn-unlike"></span>
+          <span class="fa fa-heart like-btn-unlike classname"></span>
         <% end %>
       <% elsif user_signed_in? %>
         <%= link_to("/likes/#{@tweet.id}/create", {method: "post"}) do %>
-          <span class="fa fa-heart like-btn"></span>
+          <span class="fa fa-heart like-btn classname"></span>
         <% end %>
       <% else%>
               
       <% end %>
+
+      <div class="likecount">
         <%= @likes_count %>
+      </div>
+
+      <% @tweet.tags.each do |tag| %>
+        <span class="badge badge-primary"><%= tag.name %></span>
+      <% end %>
+
+      <a href="/users/<%= @tweet.user.id %>">
+          <span>投稿者</span><%= @tweet.user.nickname %>
+      </a>
     </span>
   </div>
 
