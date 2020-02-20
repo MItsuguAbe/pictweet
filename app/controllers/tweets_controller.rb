@@ -3,7 +3,8 @@ class TweetsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
 
   def index
-    @tweets = Tweet.all.includes(:user).order("created_at DESC").page(params[:page]).per(5)
+    @tweets = params[:tag_id].present? ? Tag.find(params[:tag_id]).tweets : Tweet.all
+    @tweets = @tweets.includes(:user).order("created_at DESC").page(params[:page]).per(5)
   end
 
   def new

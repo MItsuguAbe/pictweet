@@ -1,3 +1,14 @@
+<%= form_tag tweets_path, method: :get, class: 'tweets__searchForm' do %>
+    <%= select_tag :tag_id,
+      options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
+      {
+        prompt: 'タグで絞り込み',
+        class: 'form-control tweets__select',
+        onchange: 'submit(this.form);'
+      }
+    %>
+<% end %>
+
 <!--検索フォームです-->
 <%= form_with(url: tweets_searches_path, local: true, method: :get, class: "search-form") do |form| %>
     <%= form.text_field :keyword, placeholder: "投稿を検索する", class: "search-input" %>
