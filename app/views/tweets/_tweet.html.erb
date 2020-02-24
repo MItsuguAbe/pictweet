@@ -21,6 +21,17 @@
       </div>
       <%= simple_format(tweet.text) %>
       <span class="name">
+
+          <span class="fa fa-heart like-btn-unlike classname"></span>
+          <div class="likecount">
+            <%= Like.where(tweet_id:tweet.id).count %>
+          </div>
+
+          <% tweet.tags.each do |tag| %>
+            <span class="badge badge-primary"><%= tag.name %></span>
+          <% end %>
+
+
         <a href="/users/<%= tweet.user.id %>">
           <span>投稿者</span><%= tweet.user.nickname %>
         </a>
