@@ -1,0 +1,25 @@
+<div class="contents row">
+
+  <p><%= @nickname %>さんのいいね！した投稿</p>
+
+  <% @likes.each do |like| %>
+    <%tweet=Tweet.find_by(id: like.tweet_id)%>
+
+        <div class="content_post" style="background-image: url(<%= tweet.image %>);">
+            <%= simple_format(tweet.text) %>
+
+            <span class="name"> 
+
+                <% tweet.tags.each do |tag| %>
+                    <span class="badge badge-primary"><%= tag.name %></span>
+                <% end %>
+
+                <a href="/users/<%= tweet.user.id %>">
+                    <span>投稿者</span><%= tweet.user.nickname %>
+                </a>
+            </span>
+        </div>
+  <% end %> 
+
+
+</div>

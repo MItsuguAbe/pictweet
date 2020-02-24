@@ -5,7 +5,7 @@
         <%= header_link_item('Pictweetについて', root_path) %>
         <%= header_link_item('Tweet', root_path) %>
         <%= header_link_item('Mypage', "/users/#{current_user.id}" ) %>
-        <%= header_link_item('Favorite', root_path) %>
+        <%= header_link_item('Favorite', "/users/#{current_user.id}/likes") %>
       </ul>
     <% else %>
       <ul class="navbar-nav mr-auto">
