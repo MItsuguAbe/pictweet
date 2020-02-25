@@ -29,8 +29,8 @@ class TweetsController < ApplicationController
   end
 
   def show
-    @comment = Comment.new                          #こっちはコメントを投稿するとき
-    @comments = @tweet.comments.includes(:user)     #こっちはコメントを表示するとき。あと、ここでN＋１解決する
+    @comment = Comment.new                          
+    @comments = @tweet.comments.includes(:user)     
     
     @likes_count = Like.where(tweet_id: @tweet.id).count
   end
