@@ -33,9 +33,9 @@ describe User do
 
     it "重複したemailが存在する場合登録できないこと" do
         #はじめにユーザーを登録
-        user = create(:user)
+        user = create(:user, email:"sample@gmail.com")
         #先に登録したユーザーと同じemailの値を持つユーザーのインスタンスを作成
-        another_user = build(:user)
+        another_user = build(:user, email:"sample@gmail.com")
         another_user.valid?
         expect(another_user.errors[:email]).to include("has already been taken")
     end
