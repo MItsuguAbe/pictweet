@@ -27,5 +27,8 @@ $(function(){
         $('.textbox').val('');
         $('.form__submit').prop('disabled', false);
       })
+      .fail(function(){
+        alert('非同期通信の失敗です');
+      })
     })
 })
