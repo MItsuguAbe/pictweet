@@ -1,23 +1,27 @@
 require 'rails_helper'
 
 describe User do
+  before do
+    @user=build(:user)
+  end
+
   describe '#create' do
     it "nicknameが空では登録できないこと" do
-        user = build(:user, nickname: "")
-        user.valid?
-        expect(user.errors[:nickname]).to include("can't be blank")
+        @user.nickname = ""
+        @user.valid?
+        expect(@user.errors[:nickname]).to include("can't be blank")
     end
 
     it "emailが空では登録できないこと" do
-        user = build(:user, email: "")
-        user.valid?
-        expect(user.errors[:email]).to include("can't be blank")
+        @user.email = ""
+        @user.valid?
+        expect(@user.errors[:email]).to include("can't be blank")
     end
 
     it "passwordが空では登録できないこと" do
-        user = build(:user, password: "")
-        user.valid?
-        expect(user.errors[:password]).to include("can't be blank")
+        @user.password = ""
+        @user.valid?
+        expect(@user.errors[:password]).to include("can't be blank")
     end
 
     it "passwordが存在してもpassword_confirmationが空では登録できないこと" do
@@ -27,14 +31,11 @@ describe User do
     end
 
     it "nicknameとemail、passwordとpassword_confirmationが存在すれば登録できること" do
-        user = build(:user)
-        expect(user).to be_valid
+        expect(@user).to be_valid
     end
 
     it "重複したemailが存在する場合登録できないこと" do
-        #はじめにユーザーを登録
         user = create(:user, email:"sample@gmail.com")
-        #先に登録したユーザーと同じemailの値を持つユーザーのインスタンスを作成
         another_user = build(:user, email:"sample@gmail.com")
         another_user.valid?
         expect(another_user.errors[:email]).to include("has already been taken")
@@ -52,13 +53,13 @@ describe User do
     end
 
     it "passwordが5文字以下であれば登録できないこと" do
-        user = build(:user, password:"12345" )
+        user = build(:user, password:"12345",password_confirmation:"12345")
         user.valid?
         expect(user.errors[:password]).to include("is too short (minimum is 6 characters)")
     end
 
     it "passwordが6文字以上であれば登録できること" do
-        user = build(:user, password:"123456",password_confirmation: "123456")
+        user = build(:user, password:"123456", password_confirmation:"123456")
         expect(user).to be_valid
     end
   end
