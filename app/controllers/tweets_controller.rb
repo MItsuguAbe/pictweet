@@ -31,10 +31,14 @@ class TweetsController < ApplicationController
   def show
     @comment = Comment.new                          
     @comments = @tweet.comments.includes(:user)     
-    
     @likes_count = Like.where(tweet_id: @tweet.id).count
   end
 
+  def search
+    @tweets = Tweet.search(params[:keyword])
+  end
+
+  
   private
   def tweet_params
     params.require(:tweet).permit(:image, :text, tag_ids: []).merge(user_id: current_user.id)
