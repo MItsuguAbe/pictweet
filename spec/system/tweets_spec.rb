@@ -44,6 +44,8 @@ describe 'ツイート機能', type: :system do
         before do
             visit new_tweet_path
             fill_in 'text', with: tweet_text
+            find(".form-group")
+            find(".form-check-label") #なんでこっちはみつからないのかと思ったら、input type="hidden"になってる。。なんで？
             click_button 'SEND'
         end
 
@@ -54,18 +56,4 @@ describe 'ツイート機能', type: :system do
             end
         end
     end
-
-    #describe '削除機能' do
-        #context 'ユーザーAがログインしている時' do
-            #let(:login_user){user_a}
-            #before do
-                #tweet_destroy=FactoryBot.create(:tweet, text: '削除用の投稿', user: user_a)
-                #visit tweet_path(tweet_destroy) 
-            #end
-
-            #it '削除完了' do
-                #expect(page).to have_content '削除が完了しました。'
-            #end
-        #end
-    #end
 end

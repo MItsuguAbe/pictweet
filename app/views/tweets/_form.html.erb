@@ -2,6 +2,7 @@
       <%= form.text_area :text, placeholder: "text" , rows: "10", id: "text"%>
 
       <div class="form-group">
+        
         <%= form.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
           <div class="form-check">
             <%= tag.label class: 'form-check-label' do %>
@@ -10,6 +11,7 @@
             <% end %>
           </div>
         <% end %>
+
       </div>
 
       <%= form.submit "SEND" %>
