@@ -21,7 +21,7 @@
         <% end %>
       <% elsif user_signed_in? %>
         <%= link_to("/likes/#{@tweet.id}/create", {method: "post"}) do %>
-          <span class="fa fa-heart like-btn classname"></span>
+          <span class="fa fa-heart like-btn classname" id="like"></span>
         <% end %>
       <% else%>
               
