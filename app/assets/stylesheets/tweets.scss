@@ -31,8 +31,13 @@
 
 
 .form-check{
-  float:left;
+  display:flex;
+  //float:left;
   margin-right: 35px;
+}
+
+.form-check-label{
+  margin-right: 30px;
 }
 
 .badge-primary{
