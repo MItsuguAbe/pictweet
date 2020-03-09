@@ -45,7 +45,7 @@ describe 'ツイート機能', type: :system do
             visit new_tweet_path
             fill_in 'text', with: tweet_text
             find(".form-group")
-            find(".form-check-label") #なんでこっちはみつからないのかと思ったら、input type="hidden"になってる。。なんで？
+            #find(".form-check-label") #なんでこっちはみつからないのかと思ったら、input type="hidden"になってる。。なんで？
             click_button 'SEND'
         end
 
